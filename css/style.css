@@ -1,0 +1,80 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../assets/carnaby-82KWr7KHwDg-unsplash\ 1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.background__buttons {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.background__button {
+  padding: 0 15px;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all .6s
+}
+
+.blue {
+  background-color: #3878eec8
+}
+
+.green {
+  background-color: #6abf4ba4;
+}
+
+
+.button__sign {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.button__sign-item {
+  display: inline-block;
+  width: 10px;
+  height: 2px;
+  background-color: #fff;
+  transition: all .3s;
+}
+
+.button__sign-item:nth-child(2) {
+  transform: rotate(90deg) translateX(-2px);
+}
+
+.active .button__sign-item:nth-child(2) {
+  transform: rotate(0) translateY(-2px);
+}
+
+.button__text {
+  opacity: 0;
+  margin-left: 15px;
+}
+
+.background__button.active {
+  width: max-content;
+}
+
+.active .button__text {
+  opacity: 1;
+}
