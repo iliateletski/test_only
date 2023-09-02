@@ -20,10 +20,10 @@
 }
 
 .background__button {
-  padding: 0 15px;
-  position: absolute;
   width: 40px;
   height: 40px;
+  padding: 0 15px;
+  position: absolute;
   border-radius: 40px;
   border: none;
   color: #fff;
@@ -32,7 +32,8 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  transition: all .6s
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .blue {
@@ -67,7 +68,7 @@
 }
 
 .button__text {
-  opacity: 0;
+  display: none;
   margin-left: 15px;
 }
 
@@ -76,5 +77,5 @@
 }
 
 .active .button__text {
-  opacity: 1;
+  display: inline-block;
 }

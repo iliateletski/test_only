@@ -1,29 +1,28 @@
-const buttons = [
-  {text: 'Стадион', variant: 'green', left: 34, top: 44},
-  {text: 'Отель', variant: 'green', left: 57, top: 74},
-  {text: 'Гостиница, корпус А', variant: 'green', left: 68, top: 60},
-  {text: 'Музей', variant: 'green', left: 60, top: 36},
-  {text: 'Дом', variant: 'blue', left: 71, top: 21},
-  {text: 'Гостиница, корпус Б', variant: 'blue', left: 82, top: 65},
-  {text: 'Причал', variant: 'blue', left: 22, top: 65},
-  {text: 'Ангар', variant: 'blue', left: 73, top: 42},
-  {text: 'Торговый центр', variant: 'blue', left: 29, top: 26},
-  {text: 'Стадион, главный вход', variant: 'blue', left: 56, top: 58}
+const buttonsData = [
+  { text: 'Стадион', color: 'green', left: 34, top: 44 },
+  { text: 'Отель', color: 'green', left: 57, top: 77 },
+  { text: 'Гостиница, корпус А', color: 'green', left: 68, top: 62 },
+  { text: 'Гостиница, корпус Б', color: 'blue', left: 82, top: 68 },
+  { text: 'Музей', color: 'green', left: 60, top: 36 },
+  { text: 'Дом', color: 'blue', left: 71, top: 16 },
+  { text: 'Причал', color: 'blue', left: 22, top: 67 },
+  { text: 'Ангар', color: 'blue', left: 73, top: 42 },
+  { text: 'Торговый центр', color: 'blue', left: 30, top: 22 },
+  { text: 'Стадион, главный вход', color: 'blue', left: 56, top: 58 }
 ]
 
 class Button {
-  constructor({text, variant, left, top}) {
+  constructor( { text, color, left, top } ) {
     this.text = text
-    this.variant = variant
+    this.color = color
     this.left = left
     this.top = top
-    this.show = false
     this.createButton()
   }
 
   createButton() {
     const button = document.createElement('button')
-    button.className = `background__button ${this.variant}`
+    button.className = `background__button ${this.color}`
     button.style.left = `${this.left}vw`
     button.style.top = `${this.top}vh`
 
@@ -50,24 +49,19 @@ class Button {
   }
 }
 
-const buttonBox = document.querySelector('.background__buttons')
 
-function click(e) {
+function onClick(e) {
   const button = e.target.closest('.background__button')
-  if(!button) return
-
-  if(button.closest('.active')) {
-    button.classList.remove('active')
-  } else {
-    button.classList.add('active')
+  if(button) {
+    button.closest('.active') 
+    ? button.classList.remove('active')
+    : button.classList.add('active')
   }
 }
 
-for(const btn of buttons) {
-  const button = new Button(btn)
-  button.render(buttonBox)
-}
+const buttonBox = document.querySelector('.background__buttons')
+buttonsData.forEach(item => new Button(item).render(buttonBox))
 
-parent.addEventListener('click', (e) => {
-  click(e)
+buttonBox.addEventListener('click', e => {
+  onClick(e)
 })
